@@ -43,8 +43,8 @@ export default function ManagerModal({
                   <td>{b.teacherClass}</td>
                   <td>
                     <button
-                      className="px-2 py-1 rounded bg-yellow-400 text-white text-xs mr-1 hover:bg-yellow-500"
-                      onClick={() => onEdit(idx)}
+                      className="px-2 py-1 rounded bg-yellow-500 text-white text-xs hover:bg-yellow-600 ml-1"
+                      onClick={() => onEdit(idx)} // Gọi callback onEdit (phải truyền prop này từ App.jsx)
                     >
                       Sửa
                     </button>

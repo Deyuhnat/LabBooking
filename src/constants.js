@@ -7,7 +7,7 @@ export const TIME_SLOTS = [
   "17h30 - 19h15",
   "19h30 - 21h15",
   "21h30 - 23h15",
-  "23h30 - 7h30",
+  "23h30 - 7h15",
 ];
 
 export const DAYS = ["CN", "T2", "T3", "T4", "T5", "T6", "T7"];
