@@ -1,70 +1,83 @@
-# Getting Started with Create React App
+HỆ THỐNG QUẢN LÝ ĐẶT MÁY PHÒNG LAB DSAC
+1. Mục tiêu chính
+Phát triển một ứng dụng web đặt máy phòng LAB trực quan, giúp người dùng đặt, xem và quản lý lịch sử dụng máy tính tại phòng LAB DSAC – đảm bảo chủ động, tiết kiệm thời gian, tăng hiệu quả vận hành.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+2. Tính năng nổi bật
+a. Giao diện thời khóa biểu phòng lab
+Hiển thị 9 khung giờ/ca trong ngày:
 
-## Available Scripts
+7h30 - 9h15
 
-In the project directory, you can run:
+9h30 - 11h15
 
-### `npm start`
+11h30 - 13h15
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+13h30 - 15h15
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+15h30 - 17h15
 
-### `npm test`
+17h30 - 19h15
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+19h30 - 21h15
 
-### `npm run build`
+21h30 - 23h15
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+23h30 - 7h15 (sáng hôm sau)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Bảng trạng thái trực quan: số máy trống và số máy đã đặt cho từng khung giờ, từng ngày.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Nút chọn ca để mở popup chọn máy cụ thể.
 
-### `npm run eject`
+b. Chọn ngày sử dụng
+Datepicker/thanh lịch: Chọn nhanh ngày cần xem/đặt máy.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Chuyển ngày mượt mà: Dữ liệu cập nhật real-time theo ngày.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+c. Bản đồ trạng thái 60 máy
+Popup hiển thị 60 máy theo sơ đồ bố trí thật.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Máy trống: nền trắng, có thể chọn.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Máy đã đặt: nền đỏ, không thể chọn.
 
-## Learn More
+Chọn máy trống để mở form đăng ký (họ tên, email, lớp thầy).
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+d. Quản lý booking (cho admin)
+Quản trị viên nhập mật khẩu đơn giản để truy cập:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Xem toàn bộ booking
 
-### Code Splitting
+Chỉnh sửa, xóa booking
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Xuất báo cáo Excel nhanh chóng
 
-### Analyzing the Bundle Size
+e. Xuất báo cáo sử dụng máy
+Báo cáo theo ngày/tuần/tháng, tải về dạng Excel (.xlsx)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Thông tin: STT, ngày, khung giờ, máy số, họ tên, email, lớp
 
-### Making a Progressive Web App
+f. Gửi email nhắc nhở tự động
+Trước 15 phút của mỗi khung giờ đã có máy được đặt, hệ thống sẽ tự động gửi email đến quản trị viên (hoặc email chỉ định).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Email gồm: Khung giờ, ngày, danh sách số máy cần bật.
 
-### Advanced Configuration
+3. Công nghệ sử dụng
+Frontend: ReactJS, TailwindCSS, shadcn/ui, react-datepicker
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Backend: NodeJS (Express), MongoDB Atlas, Nodemailer (gửi email)
 
-### Deployment
+Triển khai: Render.com (hoặc tương đương)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+4. Hướng dẫn sử dụng/triển khai
+A. Chạy Local
+1. Frontend:
+git clone https://github.com/[your-username]/lab-booking.git
+cd lab-booking
+npm install
+npm start
+2. Backend:
+git clone https://github.com/[your-username]/lab-booking-backend.git
+cd lab-booking-backend
+npm install
+node server.js
+(Cần chỉnh .env hoặc file config cho MongoDB, mail,...)
