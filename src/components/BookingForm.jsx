@@ -97,8 +97,22 @@ export default function BookingForm({
             <option value="Lớp của thầy Long">Lớp của thầy Long</option>
           </select>
         </div>
+
+        {/* Nội quy chuyển xuống đây */}
+        <div className="mt-4 px-2 py-2 bg-gray-50 rounded text-xs text-gray-500 text-center border border-gray-200">
+          <div>
+            <b>Lưu ý:</b> Khi nhấn <b>Xác nhận</b> sẽ <b>KHÔNG thay đổi</b> được
+            thông tin.
+            <br />
+            Nếu <b>KHÔNG dùng máy</b> trong <b>1 tiếng</b> thì máy sẽ tự động
+            tắt.
+            <br />
+            Vui lòng <b>tuân thủ nội quy phòng LAB</b>.
+          </div>
+        </div>
+
         {error && <div className="text-red-600 mb-2 text-sm">{error}</div>}
-        <div className="flex gap-2 justify-end">
+        <div className="mt-4 flex gap-2 justify-end">
           <button
             type="button"
             className="px-3 py-1 rounded bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold"
@@ -112,19 +126,6 @@ export default function BookingForm({
           >
             {mode === "edit" ? "Lưu" : "Xác nhận"}
           </button>
-        </div>
-
-        {/* Nội quy chuyển xuống đây */}
-        <div className="mt-4 px-2 py-2 bg-gray-50 rounded text-xs text-gray-500 text-center border border-gray-200">
-          <div>
-            <b>Lưu ý:</b> Khi nhấn <b>Xác nhận</b> sẽ <b>KHÔNG thay đổi</b> được
-            thông tin.
-            <br />
-            Nếu <b>KHÔNG dùng máy</b> trong <b>1 tiếng</b> thì máy sẽ tự động
-            tắt.
-            <br />
-            Vui lòng <b>tuân thủ nội quy phòng LAB</b>.
-          </div>
         </div>
       </form>
     </div>
