@@ -34,3 +34,5 @@ export default function LabDatePicker({ weekStartDate, onChangeWeek }) {
     </div>
   );
 }
+
+console.log(WEEKDAYS);

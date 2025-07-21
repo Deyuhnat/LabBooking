@@ -12,11 +12,12 @@ import PasswordModal from "./components/PasswordModal";
 import ManagerModal from "./components/ManagerModal";
 
 // Cấu hình API backend
-const API_URL = "http://localhost:3001/api";
+const API_URL = "https://lab-booking-backend-i07w.onrender.com/api";
 
 function getStartOfWeek(date) {
   return dayjs(date).startOf("week");
 }
+console.log(DAYS);
 
 function exportBookingsToExcel(bookings) {
   // Ẩn các field _id, __v khi export
