@@ -1,4 +1,5 @@
 HỆ THỐNG QUẢN LÝ ĐẶT MÁY PHÒNG LAB DSAC
+URL: https://dsaclab.onrender.com/
 1. Mục tiêu chính
 Phát triển một ứng dụng web đặt máy phòng LAB trực quan, giúp người dùng đặt, xem và quản lý lịch sử dụng máy tính tại phòng LAB DSAC – đảm bảo chủ động, tiết kiệm thời gian, tăng hiệu quả vận hành.
 
