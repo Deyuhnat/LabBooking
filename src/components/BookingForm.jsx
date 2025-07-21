@@ -1,20 +1,19 @@
 import React, { useState, useEffect } from "react";
 
 export default function BookingForm({
-  machineNumber, // Số máy đang chọn (sửa hoặc thêm mới)
-  onSubmit, // Hàm xử lý submit
-  onCancel, // Hàm đóng form
-  initialData = null, // Data cũ nếu đang chỉnh sửa
-  mode = "add", // "add" | "edit"
+  machineNumber,
+  onSubmit,
+  onCancel,
+  initialData = null,
+  mode = "add",
 }) {
-  // Nếu initialData có thì khởi tạo bằng data cũ, còn không thì rỗng
   const [fullname, setFullname] = useState(initialData?.fullname || "");
   const [email, setEmail] = useState(initialData?.email || "");
   const [teacherClass, setTeacherClass] = useState(
     initialData?.teacherClass || ""
   );
+  const [error, setError] = useState("");
 
-  // Nếu initialData thay đổi (mở lại form edit), reset state
   useEffect(() => {
     if (initialData) {
       setFullname(initialData.fullname || "");
@@ -23,15 +22,23 @@ export default function BookingForm({
     }
   }, [initialData]);
 
+  // Regex: chỉ cho chữ cái (có dấu) và khoảng trắng
+  const nameRegex = /^[a-zA-ZÀ-ỹ\s]+$/;
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit({ fullname, email, teacherClass, machineNumber });
+    if (!nameRegex.test(fullname.trim())) {
+      setError("Họ và tên chỉ được chứa chữ cái và khoảng trắng.");
+      return;
+    }
+    setError("");
+    onSubmit({ fullname: fullname.trim(), email, teacherClass, machineNumber });
   };
 
   return (
     <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
       <form
-        className="bg-white rounded-xl p-6 shadow-lg w-full max-w-xs sm:max-w-sm"
+        className="bg-white rounded-xl p-6 shadow-lg w-full max-w-xs sm:max-w-sm pb-3 relative"
         onSubmit={handleSubmit}
       >
         <div className="mb-4 flex justify-between items-center">
@@ -60,6 +67,7 @@ export default function BookingForm({
             onChange={(e) => setFullname(e.target.value)}
             required
             autoFocus
+            placeholder="Nhập họ tên (không số, không ký tự đặc biệt)"
           />
         </div>
         <div className="mb-3">
@@ -78,14 +86,18 @@ export default function BookingForm({
           <label className="block text-sm mb-1 font-medium text-gray-700">
             Lớp của thầy
           </label>
-          <input
-            type="text"
+          <select
             className="w-full px-3 py-2 border rounded focus:outline-blue-400"
             value={teacherClass}
             onChange={(e) => setTeacherClass(e.target.value)}
             required
-          />
+          >
+            <option value="">-- Chọn lớp --</option>
+            <option value="Lớp của thầy Phil">Lớp của thầy Phil</option>
+            <option value="Lớp của thầy Long">Lớp của thầy Long</option>
+          </select>
         </div>
+        {error && <div className="text-red-600 mb-2 text-sm">{error}</div>}
         <div className="flex gap-2 justify-end">
           <button
             type="button"
@@ -100,6 +112,19 @@ export default function BookingForm({
           >
             {mode === "edit" ? "Lưu" : "Xác nhận"}
           </button>
+        </div>
+
+        {/* Nội quy chuyển xuống đây */}
+        <div className="mt-4 px-2 py-2 bg-gray-50 rounded text-xs text-gray-500 text-center border border-gray-200">
+          <div>
+            <b>Lưu ý:</b> Khi nhấn <b>Xác nhận</b> sẽ <b>KHÔNG thay đổi</b> được
+            thông tin.
+            <br />
+            Nếu <b>KHÔNG dùng máy</b> trong <b>1 tiếng</b> thì máy sẽ tự động
+            tắt.
+            <br />
+            Vui lòng <b>tuân thủ nội quy phòng LAB</b>.
+          </div>
         </div>
       </form>
     </div>
