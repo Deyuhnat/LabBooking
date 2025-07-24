@@ -72,12 +72,12 @@ Triển khai: Render.com (hoặc tương đương)
 4. Hướng dẫn sử dụng/triển khai
 A. Chạy Local
 1. Frontend:
-git clone https://github.com/[your-username]/lab-booking.git
+git clone https://github.com/Deyuhnat/LabBooking.git
 cd lab-booking
 npm install
 npm start
 2. Backend:
-git clone https://github.com/[your-username]/lab-booking-backend.git
+git clone https://github.com/Deyuhnat/LabBooking-Backend.git
 cd lab-booking-backend
 npm install
 node server.js
